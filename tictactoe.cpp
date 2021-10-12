@@ -1,64 +1,70 @@
 #include <iostream>
 using namespace std;
 
+// initializing the gride size
+const int boardSize = 9;
+
 // protypes of helper functions
-void show(char arr[9], int len);
-bool win(char arr[9], int len);
+void show(char board[boardSize], int length);
+bool win(char board[boardSize], int length);
+
+
+
 int main()
 {
     // declaring board grid for the game
-    char board[9];
-    for (int i = 0; i < 9; i++)
+    char board[boardSize];
+    for (int i = 0; i < boardSize; i++)
     {
         board[i] = '-';
     }
-    int len = sizeof(board)/sizeof(board[0]);
+    int length = sizeof(board)/sizeof(board[0]);
 
-    show(board, len);
-    int temp_entry;
+    show(board, length);
+    int tempEntry;
     cout << endl;
     while (true)
     {
         cout << "Enter a value from 1-9: ";
-        cin >> temp_entry;
+        cin >> tempEntry;
         
         // checking for user entry is valid or not
-        if ((!(temp_entry >= 1 && temp_entry <= 9 )))
+        if ((!(tempEntry >= 1 && tempEntry <= boardSize)))
         {
             cout << "enter a valid entry!!!!" << endl;
             continue;
         }
         // checking if the gride index is already filled or not
-        if (board[temp_entry - 1] != '-')
+        if (board[tempEntry - 1] != '-')
         {
             cout << "enter a valid entry!!!!" << endl;
             continue;
         }
-        temp_entry--;
-        board[temp_entry] = 'X';
+        tempEntry--;
+        board[tempEntry] = 'X';
 
         // if satisfies the winner condtion then program will end
-        bool won = win(board, len);
-        show(board, len);
+        bool won = win(board, length);
+        show(board, length);
         if (won == true) 
             break;
         
         // generating random entry for computer player (for now its random)
-        int computer_move;
+        int computerMove;
         cout << endl << "Computer Move!" << endl;
         while (true) {
-            computer_move = (rand() % 9);
-            if (board[computer_move] == '-')
+            computerMove = (rand() % 9);
+            if (board[computerMove] == '-')
             {
-                board[computer_move] = 'O';
+                board[computerMove] = 'O';
                 break;
             }
         }
 
-        show(board, len);
+        show(board, length);
         
         // checking for winner
-        won = win(board, len);
+        won = win(board, length);
         if (won == true)
             break;
     }
@@ -69,110 +75,110 @@ int main()
 
 
 // helper function for showing the updated grid everytime
-void show(char arr[9], int len)
+void show(char board[boardSize], int length)
 {
-    for (int i = 0; i < len; i++)
+    for (int i = 0; i < length; i++)
     {
         if (i%3 == 0)
         {
             cout << endl << "| ";
 
         }
-        cout << arr[i] << " | ";
+        cout << board[i] << " | ";
     }
 }
 
 // helper function for checking the winner (i know its bad design. didnt come up with better algorithm)
-bool win(char arr[9], int len)
+bool win(char board[boardSize], int length)
 {
 
-    if (arr[0] == 'X' && arr[1] == 'X' && arr[2] == 'X')
+    if (board[0] == 'X' && board[1] == 'X' && board[2] == 'X')
     {
         cout << "!!!!!!!!!!---YOU WIN---!!!!!!" << endl;
         return true;
     }
-    else if (arr[3] == 'X' && arr[4] == 'X' && arr[5] == 'X')
+    else if (board[3] == 'X' && board[4] == 'X' && board[5] == 'X')
     {
         cout << "!!!!!!!!!!---YOU WIN---!!!!!!" << endl;
         return true;
     }
-    else if (arr[6] == 'X' && arr[7] == 'X' && arr[8] == 'X')
+    else if (board[6] == 'X' && board[7] == 'X' && board[8] == 'X')
     {
         cout << "!!!!!!!!!!---YOU WIN---!!!!!!" << endl;
         return true;
     }
-    else if (arr[0] == 'X' && arr[3] == 'X' && arr[6] == 'X')
+    else if (board[0] == 'X' && board[3] == 'X' && board[6] == 'X')
     {
         cout << "!!!!!!!!!!---YOU WIN---!!!!!!" << endl;
         return true;
     }
-    else if (arr[1] == 'X' && arr[4] == 'X' && arr[7] == 'X')
+    else if (board[1] == 'X' && board[4] == 'X' && board[7] == 'X')
     {
         cout << "!!!!!!!!!!---YOU WIN---!!!!!!" << endl;
         return true;
     }
-    else if (arr[2] == 'X' && arr[5] == 'X' && arr[8] == 'X')
+    else if (board[2] == 'X' && board[5] == 'X' && board[8] == 'X')
     {
         cout << "!!!!!!!!!!---YOU WIN---!!!!!!" << endl;
         return true;
     }
-    else if (arr[0] == 'X' && arr[4] == 'X' && arr[8] == 'X')
+    else if (board[0] == 'X' && board[4] == 'X' && board[8] == 'X')
     {
         cout << "!!!!!!!!!!---YOU WIN---!!!!!!" << endl;
         return true;
     }
-    else if (arr[2] == 'X' && arr[4] == 'X' && arr[6] == 'X')
+    else if (board[2] == 'X' && board[4] == 'X' && board[6] == 'X')
     {
         cout << "!!!!!!!!!!---YOU WIN---!!!!!!" << endl;
         return true;
     }
 
-    if (arr[0] == 'O' && arr[1] == 'O' && arr[2] == 'O')
+    if (board[0] == 'O' && board[1] == 'O' && board[2] == 'O')
     {
         cout << "Computer win" << endl;
         return true;
     }
-    else if (arr[3] == 'O' && arr[4] == 'O' && arr[5] == 'O')
+    else if (board[3] == 'O' && board[4] == 'O' && board[5] == 'O')
     {
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;
     }
-    else if (arr[6] == 'O' && arr[7] == 'O' && arr[8] == 'O')
+    else if (board[6] == 'O' && board[7] == 'O' && board[8] == 'O')
     {
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;
     }
-    else if (arr[0] == 'O' && arr[3] == 'O' && arr[6] == 'O')
+    else if (board[0] == 'O' && board[3] == 'O' && board[6] == 'O')
     {
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;
     }
-    else if (arr[1] == 'O' && arr[4] == 'O' && arr[7] == 'O')
+    else if (board[1] == 'O' && board[4] == 'O' && board[7] == 'O')
     {
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;
     }
-    else if (arr[2] == 'O' && arr[5] == 'O' && arr[8] == 'O')
+    else if (board[2] == 'O' && board[5] == 'O' && board[8] == 'O')
     {
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;
     }
-        else if (arr[0] == 'X' && arr[4] == 'X' && arr[8] == 'X')
+        else if (board[0] == 'X' && board[4] == 'X' && board[8] == 'X')
     {
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;
     }
-    else if (arr[2] == 'X' && arr[4] == 'X' && arr[6] == 'X')
+    else if (board[2] == 'X' && board[4] == 'X' && board[6] == 'X')
     {
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;
     }
-    else if (arr[0] == 'O' && arr[4] == 'O' && arr[8] == 'O')
+    else if (board[0] == 'O' && board[4] == 'O' && board[8] == 'O')
     {
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;
     }
-    else if (arr[2] == 'O' && arr[4] == 'O' && arr[6] == 'O')
+    else if (board[2] == 'O' && board[4] == 'O' && board[6] == 'O')
     {
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;
