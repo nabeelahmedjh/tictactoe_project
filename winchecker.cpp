@@ -1,7 +1,7 @@
 #include "helper.h"
 
 
-// helper function for checking the winner (i know its bad design. didnt come up with better algorithm)
+// helper function for checking the winner
 
 bool win(char board[boardSize], int length)
 {
