@@ -1,11 +1,5 @@
 #include "helper.h"
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4ec241bebcbc29def00c5ac7c397253488997c6a
-// helper function for checking the winner
-
 bool win(char board[boardSize], int length)
 {
 
