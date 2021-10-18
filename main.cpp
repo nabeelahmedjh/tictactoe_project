@@ -2,7 +2,6 @@
 #include "helper.h"
 using namespace std;
 
-
 int main()
 {
     // declaring board grid for the game
@@ -11,7 +10,7 @@ int main()
     {
         board[i] = '-';
     }
-    int length = sizeof(board)/sizeof(board[0]);
+    int length = sizeof(board) / sizeof(board[0]);
 
     show(board, length);
     int tempEntry;
@@ -20,7 +19,7 @@ int main()
     {
         cout << "Enter a value from 1-9: ";
         cin >> tempEntry;
-        
+
         // checking for user entry is valid or not
         if ((!(tempEntry >= 1 && tempEntry <= boardSize)))
         {
@@ -39,13 +38,15 @@ int main()
         // if satisfies the winner condtion then program will end
         bool won = win(board, length);
         show(board, length);
-        if (won == true) 
+        if (won == true)
             break;
-        
+
         // generating random entry for computer player (for now its random)
         int computerMove;
-        cout << endl << "Computer Move!" << endl;
-        while (true) {
+        cout << endl
+             << "Computer Move!" << endl;
+        while (true)
+        {
             computerMove = (rand() % 9);
             if (board[computerMove] == '-')
             {
@@ -55,14 +56,12 @@ int main()
         }
 
         show(board, length);
-        
+
         // checking for winner
         won = win(board, length);
         if (won == true)
             break;
     }
 
-    
     return 0;
 }
-

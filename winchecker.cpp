@@ -1,7 +1,6 @@
 #include "helper.h"
 
-
-// helper function for checking the winner (i know its bad design. didnt come up with better algorithm)
+// helper function for checking the winner
 
 bool win(char board[boardSize], int length)
 {
@@ -77,7 +76,7 @@ bool win(char board[boardSize], int length)
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;
     }
-        else if (board[0] == 'X' && board[4] == 'X' && board[8] == 'X')
+    else if (board[0] == 'X' && board[4] == 'X' && board[8] == 'X')
     {
         cout << "!!!!!!!!!!---COMPUTER WINS---!!!!!!" << endl;
         return true;

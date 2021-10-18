@@ -5,10 +5,10 @@ void show(char board[boardSize], int length)
 {
     for (int i = 0; i < length; i++)
     {
-        if (i%3 == 0)
+        if (i % 3 == 0)
         {
-            cout << endl << "| ";
-
+            cout << endl
+                 << "| ";
         }
         cout << board[i] << " | ";
     }
